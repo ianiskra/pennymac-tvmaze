@@ -13,8 +13,7 @@ function App() {
         </p>
         <Submit />
         <div id="results"></div>
-        
-        
+
       </header>
     </div>
   );

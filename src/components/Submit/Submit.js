@@ -41,6 +41,7 @@ function doSearch(){
 					image = result[i].show.image.medium;
 				}
 
+				// Setting description
 				let summary = "No Description";
 				if (result[i].show.summary){
 
