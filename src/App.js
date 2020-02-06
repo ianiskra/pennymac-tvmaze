@@ -9,7 +9,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Hello World
+          TV Maze
         </p>
         <Submit />
         <div id="results"></div>

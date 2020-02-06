@@ -9,7 +9,7 @@ const Submit = props => (
 	</div>
 );
 
-
+// Performs Search
 function doSearch(){
 	let userSearch = document.getElementById('user-search').value;
 	console.log("It Works: " + userSearch);
@@ -18,45 +18,49 @@ function doSearch(){
 	var tvAPI = new XMLHttpRequest();
 	tvAPI.onreadystatechange = function () {
 
+		// Ensure valid response
 		if (this.readyState === 4 && this.status === 200) {
 			
 			// hold search results
 			let result = JSON.parse(tvAPI.responseText);
 			
+			// Hold all outputs
 			let output = "";
 
 			// loop through results
 			for(let i = 0; i < result.length; i++){
-				console.log(result[i]);
+				// console.log(result[i]);
 
 				let name = result[i].show.name;
 				let score = result[i].score;
+				
 				// Setting image
 				let image = "";
 				if(result[i].show.image){
-					// Checks for image
+					// Run if result contains img
 					image = result[i].show.image.medium;
 				}
 
 				let summary = "No Description";
 				if (result[i].show.summary){
-					// Check for summary
+
+					// Run if result contains summary
 					summary = result[i].show.summary;
 				}
 
 				output += `<div class="show-result">
-
 							<div class="show-name">${name}<br>${score}</div>
 							<div class="show-summary">${summary}</div>
 							<div class="show-image"><img src="${image}"></div>
-				</div>
-				`
+						  </div>`;
 			}
 
+			// Generating output and displaying
 			document.getElementById("results").innerHTML = output;
 			
 		}
 	};
+	// Request and response
 	tvAPI.open("GET", `https://api.tvmaze.com/search/shows?q=${userSearch}`, true);
 	tvAPI.send();
 }
