@@ -1,0 +1,48 @@
+/**/
+.show-result{
+    border-bottom: 1px solid black;
+    text-align: center;
+    padding: 40px;
+}
+
+.show-result div{
+    display: inline-block;
+    vertical-align: top;
+}
+
+.show-name{
+    width: 10%;
+}
+
+.show-summary{
+    width: 70%;
+    padding: 10px 40px 10px 40px;
+}
+
+.show-image{
+    width: 15%;
+    max-width: 150px;
+}
+
+.show-image img {
+    width: 100%;
+}
+
+/* Media Queries */
+@media screen and (max-width: 1275px){
+    .show-result div{
+        display: block;
+    }
+
+    .show-name{
+        width: 100%;
+    }
+
+    .show-summary{
+        width: calc(100% - 80px);
+    }
+
+    .show-image{
+        margin: auto;
+    }
+}
