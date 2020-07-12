@@ -1,17 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Submit.css';
+import Results from '../Results';
 
-const Submit = props => (
-	// Component: input & submit
-	<div>
-		<button onClick={doSearch}>Search</button>
-		<input id="user-search"></input>
-	</div>
-);
+const Submit = props => {
+
+	// Create UseState Hooks
+	const [value, setVal] = useState();
+	const [outputVal, setOutput] = useState();
+	
+	// Return as Component
+	return(
+		<div>
+			<button onClick={doSearch}>Search</button>
+			<input onChange={(e) => setVal(e.target.value)} />
+			<Results output={outputVal} />
+		</div>
+	)
 
 // Performs Search
 function doSearch(){
-	let userSearch = document.getElementById('user-search').value;
+	let userSearch = value;
 	console.log("It Works: " + userSearch);
 
 	// Sending XMLHTTPRequest
@@ -54,17 +62,19 @@ function doSearch(){
 							<div class="show-summary">${summary}</div>
 							<div class="show-image"><img src="${image}"></div>
 						  </div>`;
-			}
+				}
 
-			// Generating output and displaying
-			document.getElementById("results").innerHTML = output;
+				// Generating output and displaying
+				setOutput(output);
 			
-		}
-	};
-	// Request and response
-	tvAPI.open("GET", `https://api.tvmaze.com/search/shows?q=${userSearch}`, true);
-	tvAPI.send();
-}
+			}
+		};
+		// Request and response
+		tvAPI.open("GET", `https://api.tvmaze.com/search/shows?q=${userSearch}`, true);
+		tvAPI.send();
+	}
+
+};
 
 const SubmitPropTypes = {
 	// always use prop types!

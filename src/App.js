@@ -2,6 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Submit from './components/Submit';
+import Results from './components/Results';
 
 function App() {
   return (
@@ -12,7 +13,7 @@ function App() {
           TV Maze
         </p>
         <Submit />
-        <div id="results"></div>
+        <Results />
 
       </header>
     </div>
